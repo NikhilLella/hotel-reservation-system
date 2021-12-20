@@ -1,7 +1,13 @@
 package com.myhotel.hotel.repository;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public class HotelRepository implements JpaRepository<T, ID>{
+import com.myhotel.hotel.model.Hotel;
+
+public interface HotelRepository extends JpaRepository<Hotel, Integer>{
+
+	List<Hotel> findByLocation(String location);
 
 }
