@@ -33,6 +33,7 @@ public class HotelController {
 		log.info("inside create hotel method");
 		try {
 			Hotel hotel1= hotelService.saveHotel(hotel);
+		
 			return new ResponseEntity<>(hotel1, HttpStatus.CREATED);
 		} catch (Exception e) {
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);

@@ -1,7 +1,5 @@
 package com.myhotel.hotel.model;
 
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,10 +14,10 @@ import lombok.Setter;
 
 @Entity
 @Table(name = "Hotel_details")
-@Getter
-@Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
 public class Hotel {
 
 	@Id
