@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.myhotel.hotel.model.Hotel;
+import com.myhotel.hotel.entity.Hotel;
 import com.myhotel.hotel.repository.HotelRepository;
 
 @Service

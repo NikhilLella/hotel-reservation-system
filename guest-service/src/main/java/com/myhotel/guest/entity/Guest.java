@@ -1,4 +1,4 @@
-package com.myhotel.guest.model;
+package com.myhotel.guest.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -6,20 +6,18 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @Entity
 @Table(name="guest_details")
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
-@Setter
+@Data
 public class Guest {
 
 	@Id
-	@Column(name="id")
+	@Column(name="id") 
 	private Integer id;
 	
 	@Column(name="name")

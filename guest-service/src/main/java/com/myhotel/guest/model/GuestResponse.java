@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
+import com.myhotel.guest.entity.Guest;
+
 import lombok.Data;
 
 @Data

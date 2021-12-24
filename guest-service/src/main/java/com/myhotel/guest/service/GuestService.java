@@ -5,7 +5,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.myhotel.guest.model.Guest;
+import com.myhotel.guest.entity.Guest;
 import com.myhotel.guest.model.GuestResponse;
 import com.myhotel.guest.repository.GuestRepository;
 

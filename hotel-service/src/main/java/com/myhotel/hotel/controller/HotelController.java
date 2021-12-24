@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.myhotel.hotel.model.Hotel;
+import com.myhotel.hotel.entity.Hotel;
 import com.myhotel.hotel.service.HotelService;
 
 import lombok.extern.slf4j.Slf4j;

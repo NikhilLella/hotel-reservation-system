@@ -1,0 +1,19 @@
+
+spring:
+  application:
+    name: RESERVATION-SERVICE
+  datasource:
+    url: jdbc:sqlserver://localhost;databaseName=HotelReservation
+    username: lella
+    password: Itachi@122
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update  cloud:    config:      enabled: true
+      uri:      -  http://localhost:8888
+
+server:
+  port: 8082
+    

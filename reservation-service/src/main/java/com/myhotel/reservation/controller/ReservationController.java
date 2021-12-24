@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.myhotel.reservation.model.Reservation;
+import com.myhotel.reservation.entity.Reservation;
 import com.myhotel.reservation.service.ReservationService;
 
 @RestController

@@ -1,4 +1,4 @@
-package com.myhotel.reservation.model;
+package com.myhotel.reservation.entity;
 
 import java.util.Date;
 
@@ -37,5 +37,7 @@ public class Reservation {
 	
 	@Column(name="total_price")
 	private Long totalPrice;
+	
+	//private todo payment
 	
 }
