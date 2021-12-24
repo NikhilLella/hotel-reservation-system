@@ -14,7 +14,9 @@ spring:
     hibernate:
       ddl-auto: update  cloud:    config:      uri:      -  http://localhost:8888
       enabled: true
-
+  zipkin:
+    enabled: true
+    base-url: http://localhost:9411/
 server:
   port: 8083
     
