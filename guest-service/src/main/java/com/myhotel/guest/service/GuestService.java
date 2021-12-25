@@ -1,50 +1,17 @@
 package com.myhotel.guest.service;
 
-import java.util.Optional;
+import javax.validation.Valid;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import com.myhotel.guest.model.GuestDTO;
 
-import com.myhotel.guest.entity.Guest;
-import com.myhotel.guest.model.GuestResponse;
-import com.myhotel.guest.repository.GuestRepository;
-
-
-@Service
-public class GuestService {
+public interface GuestService {
+	void addGuest(GuestDTO dto);
+	GuestDTO findByGuestId (Integer guestId);
+	void deleteGuest(Integer guestId);
+	void updateGuest(@Valid GuestDTO body);
 	
-	@Autowired
-	private GuestRepository guestRepository;
+	GuestDTO updateGuestbyId(Integer guestId, String name, String proof, String stayHistory, String address,
+			Long mobileNumber);
 	
-	@Autowired
-	private GuestResponse guestResponse;
-
-	public GuestResponse createGuest(Guest guest) {
-		GuestResponse gr = findByGuestId(guest.getId());
-		if(!gr.getIsPresent().booleanValue()) {
-		guestResponse.clearGuestResponse();
-		guestResponse.setGuest(guestRepository.save(guest));
-		guestResponse.setResponseMessage("success");
-		}
-		return  guestResponse;
-		
-		
-	}
-
-
-	public GuestResponse findByGuestId(Integer id) {
-		guestResponse.clearGuestResponse();
-		
-		Optional<Guest> og = guestRepository.findById(id);
-		
-		if(og.isPresent()) {
-			guestResponse.setGuest(og.get());
-			guestResponse.setIsPresent(true);
-			guestResponse.setResponseMessage("guest already exists with id "+id);
-		}
-		else 
-			guestResponse.setResponseMessage("cannot find the guest with the id "+id);
-		return guestResponse;
-	}
-
+	
 }

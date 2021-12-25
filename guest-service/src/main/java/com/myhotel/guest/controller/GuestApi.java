@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.myhotel.guest.model.GuestApiResponse;
 import com.myhotel.guest.model.GuestDTO;
 
 import io.swagger.annotations.Api;
@@ -35,17 +36,16 @@ public interface GuestApi {
 	@ApiResponses(value = { @ApiResponse(code = 201, message = " Guest Created"),
 			@ApiResponse(code = 405, message = "Invalid input"),
 			@ApiResponse(code = 500, message = "Internal Server Error") })
-	@RequestMapping(value = "/guest", produces = { "application/xml", "application/json" }, consumes = {
+	@RequestMapping(value = "/guest", produces = { "application/json" }, consumes = {
 			"application/json", "application/xml" }, method = RequestMethod.POST)
-	ResponseEntity<Void> addGuest(
+	ResponseEntity<GuestApiResponse<GuestDTO>> addGuest(
 			@ApiParam(value = "Guest object that needs to be added ", required = true) @Valid @RequestBody GuestDTO body);
 
 	@ApiOperation(value = "Deletes a guest", nickname = "deleteGuest", notes = "", tags = { "guest", })
 	@ApiResponses(value = { @ApiResponse(code = 400, message = "Invalid ID supplied"),
 			@ApiResponse(code = 404, message = "Pet not found") })
-	@RequestMapping(value = "/guest/{guestId}", produces = { "application/xml",
-			"application/json" }, method = RequestMethod.DELETE)
-	ResponseEntity<Void> deleteGuest(
+	@RequestMapping(value = "/guest/{guestId}", produces = { "application/json" }, method = RequestMethod.DELETE)
+	ResponseEntity<GuestApiResponse<Void>> deleteGuest(
 			@ApiParam(value = "Guest id to delete", required = true) @PathVariable("guestId") Integer guestId);
 
 	@ApiOperation(value = "Find guest by ID", nickname = "findByGuestId", notes = "Returns a single guest", response = GuestDTO.class, tags = {
@@ -53,9 +53,9 @@ public interface GuestApi {
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "successful operation", response = GuestDTO.class),
 			@ApiResponse(code = 400, message = "Invalid ID supplied"),
 			@ApiResponse(code = 404, message = "Guest not found") })
-	@RequestMapping(value = "/guest/{guestId}", produces = { "application/xml",
+	@RequestMapping(value = "/guest/{guestId}", produces = { 
 			"application/json" }, method = RequestMethod.GET)
-	ResponseEntity<GuestDTO> findByGuestId(
+	ResponseEntity<GuestApiResponse<GuestDTO>> findByGuestId(
 			@ApiParam(value = "ID of guest to return", required = true) @PathVariable("guestId") Integer guestId);
 
 	@ApiOperation(value = "Update an existing guest", nickname = "updateGuest", notes = "", tags = { "guest", })
@@ -63,21 +63,21 @@ public interface GuestApi {
 			@ApiResponse(code = 400, message = "Invalid ID supplied"),
 			@ApiResponse(code = 404, message = "Guest  not found"),
 			@ApiResponse(code = 405, message = "Validation exception") })
-	@RequestMapping(value = "/guest", produces = { "application/xml", "application/json" }, consumes = {
-			"application/json", "application/xml" }, method = RequestMethod.PUT)
-	ResponseEntity<Void> updateGuest(
+	@RequestMapping(value = "/guest", produces = {  "application/json" }, consumes = {
+			"application/json" }, method = RequestMethod.PUT)
+	ResponseEntity<GuestApiResponse<Void>> updateGuest(
 			@ApiParam(value = "Guest object that needs to be added", required = true) @Valid @RequestBody GuestDTO body);
 
 	@ApiOperation(value = "Updates a guest with form data", nickname = "updatePetbyId", notes = "", tags = { "guest", })
 	@ApiResponses(value = { @ApiResponse(code = 405, message = "Invalid input") })
-	@RequestMapping(value = "/guest/{guestId}", produces = { "application/xml", "application/json" }, consumes = {
+	@RequestMapping(value = "/guest/{guestId}", produces = {  "application/json" }, consumes = {
 			"application/x-www-form-urlencoded" }, method = RequestMethod.PUT)
-	ResponseEntity<Void> updateGuestbyId(
+	ResponseEntity<GuestApiResponse<GuestDTO>> updateGuestbyId(
 			@ApiParam(value = "ID of guest that needs to be updated", required = true) @PathVariable("guestId") Integer guestId,
 			@ApiParam(value = "Updated name of the guest") @RequestParam(value = "name", required = false) String name,
 			@ApiParam(value = "Updated proof of the guest") @RequestParam(value = "proof", required = false) String proof,
 			@ApiParam(value = "Updated stay history of the guest") @RequestParam(value = "stayHistory", required = false) String stayHistory,
 			@ApiParam(value = "Updated address of the guest") @RequestParam(value = "address", required = false) String address,
-			@ApiParam(value = "Updated mobile number of the guest") @RequestParam(value = "mobileNumber", required = false) String mobileNumber);
+			@ApiParam(value = "Updated mobile number of the guest") @RequestParam(value = "mobileNumber", required = false) Long mobileNumber);
 
 }
